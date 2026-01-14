@@ -5,3 +5,6 @@ __pycache__/
 logs/
 mlruns/
 .dvc/cache/
+
+data/data_raw/*.pdf
+data/data_processed/*
