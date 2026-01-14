@@ -8,3 +8,5 @@ mlruns/
 
 data/data_raw/*.pdf
 data/data_processed/*
+
+data/vectorstore/*
