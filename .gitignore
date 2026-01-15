@@ -13,3 +13,5 @@ data/vectorstore/*
 
 # ollama local files
 .ollama/
+
+mlruns/

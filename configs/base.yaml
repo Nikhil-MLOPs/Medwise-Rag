@@ -1,0 +1,18 @@
+retrieval:
+  strategy: mmr        # mmr | similarity
+  k: 5
+  fetch_k: 20
+
+chunking:
+  chunk_size: 800
+  chunk_overlap: 200
+
+llm:
+  provider: ollama
+  model: phi-3:3.8    # dev-fast default; experiments may override
+  temperature: 0.0
+  max_tokens: 256
+  num_ctx: 2048
+
+evaluation:
+  questions_path: data/eval/questions.json

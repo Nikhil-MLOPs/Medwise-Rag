@@ -1,0 +1,11 @@
+chunking:
+  chunk_size: 800
+  chunk_overlap: 200
+
+retrieval:
+  strategy: similarity
+  k: 5
+
+llm:
+  model: llama3.2
+  num_ctx: 2048

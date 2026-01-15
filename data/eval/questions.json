@@ -1,0 +1,62 @@
+[
+{
+"id": "q1",
+"question": "What is acne?",
+"expected_answer": "Acne is a common skin disease characterized by pimples on the face, chest, and back. It occurs when the pores of the skin become clogged with oil, dead skin cells, and bacteria.",
+"expected_pages": [55, 56, 57, 58]
+},
+{
+"id": "q2",
+"question": "What is AIDS?",
+"expected_answer": "Acquired immune deficiency syndrome (AIDS) is an infectious disease caused by the human immunodeficiency virus (HIV). It was first recognized in the United States in 1981. AIDS is the advanced form of infection with the HIV virus, which may not cause recognizable disease for a long period after the initial exposure (latency).",
+"expected_pages": [110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124]
+},
+{
+"id": "q3",
+"question": "What is Alzheimer's disease?",
+"expected_answer": "Alzheimer's disease (AD) is the most common form of dementia, a neurologic disease characterized by loss of mental ability severe enough to interfere with normal activities of daily living, lasting at least six months, and not present from birth. AD usually occurs in old age, and is marked by a decline in cognitive functions such as remembering, reasoning, and planning.",
+"expected_pages": [171, 172, 173, 174, 175, 176, 177]
+},
+{
+"id": "q4",
+"question": "What is anemia?",
+"expected_answer": "Anemia is a condition characterized by abnormally low levels of healthy red blood cells or hemoglobin (the component of red blood cells that delivers oxygen to tissues throughout the body).",
+"expected_pages": [217, 218, 219, 220, 221, 222]
+},
+{
+"id": "q5",
+"question": "What is appendicitis?",
+"expected_answer": "Appendicitis is an inflammation of the appendix, which is the worm-shaped pouch attached to the cecum, the beginning of the large intestine.",
+"expected_pages": [378, 379, 380]
+},
+{
+"id": "q6",
+"question": "What is asthma?",
+"expected_answer": "Today asthma is viewed as a chronic (long-lasting) inflammatory disease of the airways. In those susceptible to asthma, this inflammation causes the airways to narrow periodically. This, in turn, produces wheezing and breathlessness, sometimes to the point where the patient gasps for air. Obstruction to air flow either stops spontaneously or responds to a wide range of treatments, but continuing inflammation makes the airways hyper-responsive to stimuli such as cold air, exercise, dust mites, pollutants in the air, and even stress and anxiety.",
+"expected_pages": [416, 417, 418, 419, 420, 421]
+},
+{
+"id": "q7",
+"question": "What is autism?",
+"expected_answer": "Autism is a severe disorder of brain function marked by problems with social contact, intelligence and language, together with ritualistic or compulsive behavior and bizarre responses to the environment.",
+"expected_pages": [454, 455, 456, 457, 458]
+},
+{
+"id": "q8",
+"question": "What is bipolar disorder?",
+"expected_answer": "Bipolar, or manic-depressive disorder, is a mood disorder that causes radical emotional changes and mood swings, from manic highs to depressive lows. The majority of bipolar individuals experience alternating episodes of mania and depression.",
+"expected_pages": [522, 523, 524, 525, 526]
+},
+{
+"id": "q9",
+"question": "What is bladder cancer?",
+"expected_answer": "Bladder cancer is a disease in which the cells lining the urinary bladder lose the ability to regulate their growth and start dividing uncontrollably. This abnormal growth results in a mass of cells that form a tumor.",
+"expected_pages": [543, 544, 545, 546, 547]
+},
+{
+"id": "q10",
+"question": "What is breast cancer?",
+"expected_answer": "Breast cancer is the uncontrolled growth of abnormal cells in one or both breasts. It is the most common cancer among women, accounting for nearly one of every three cancers diagnosed in American women.",
+"expected_pages": [614, 615, 616, 617, 618, 619, 620, 621, 622, 623]
+}
+]

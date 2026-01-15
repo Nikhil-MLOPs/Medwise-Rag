@@ -1,0 +1,7 @@
+[core]
+    remote = dagshub
+['remote "dagshub"']
+    url = https://dagshub.com/Nikhil-MLOPs/Medwise-Rag.dvc
+    auth = basic
+    user = Nikhil-MLOPs
+    password = b731b7b7a2a8990942557d0b938a3df8b8197e77

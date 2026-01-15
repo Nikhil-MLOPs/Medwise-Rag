@@ -1,9 +1,7 @@
 import logging
 from pathlib import Path
-from typing import List
 
 from langchain_chroma import Chroma
-from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 
 logger = logging.getLogger(__name__)
@@ -15,11 +13,21 @@ class VectorRetriever:
         vectorstore_dir: Path,
         model_name: str,
         k: int = 5,
+        strategy: str = "mmr",
+        fetch_k: int = 20,
     ):
+        """
+        Vector retriever with configurable retrieval strategy.
+
+        strategy:
+          - "mmr": Maximal Marginal Relevance
+          - "similarity": Pure similarity search
+        """
+
         logger.info("Initializing embedding function for retrieval")
 
         self.embeddings = HuggingFaceEmbeddings(
-            model_name=model_name,
+            model_name=model_name
         )
 
         logger.info("Loading Chroma vectorstore from disk")
@@ -30,15 +38,28 @@ class VectorRetriever:
         )
 
         self.k = k
+        self.fetch_k = fetch_k
+        self.strategy = strategy
 
-    def retrieve(self, query: str) -> List[Document]:
+        if strategy == "mmr":
+            logger.info("Using MMR retrieval strategy")
+            self.retriever = self.vectorstore.as_retriever(
+                search_type="mmr",
+                search_kwargs={"k": k, "fetch_k": fetch_k},
+            )
+        elif strategy == "similarity":
+            logger.info("Using similarity retrieval strategy")
+            self.retriever = self.vectorstore.as_retriever(
+                search_type="similarity",
+                search_kwargs={"k": k},
+            )
+        else:
+            raise ValueError(
+                f"Unsupported retrieval strategy: {strategy}"
+            )
+
+    def retrieve(self, query: str):
         logger.info(f"Running retrieval for query: {query}")
-
-        results = self.vectorstore.max_marginal_relevance_search(
-            query,
-            k=self.k,
-            fetch_k=self.k * 4,
-        )
-
-        logger.info(f"Retrieved {len(results)} documents")
-        return results
+        docs = self.retriever.invoke(query)
+        logger.info(f"Retrieved {len(docs)} documents")
+        return docs

@@ -1,6 +1,10 @@
 import logging
 from logging.config import dictConfig
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 def setup_logging() -> None:
     dictConfig(
