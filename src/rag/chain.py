@@ -8,18 +8,29 @@ from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import AIMessage
 from langchain_ollama import ChatOllama
 
+from langchain_core.tracers import LangChainTracer
+from langchain_core.callbacks.manager import CallbackManager
+
 from src.retrieval.retriever import VectorRetriever
 
 logger = logging.getLogger(__name__)
 
 # ---------------------------
-# Environment configuration
+# Environment resolution
 # ---------------------------
-OLLAMA_BASE_URL = os.getenv(
-    "OLLAMA_BASE_URL",
-    "http://127.0.0.1:11434"
-)
+def resolve_ollama_base_url() -> str:
+    """
+    Resolve Ollama base URL safely across:
+    - Local dev
+    - Docker
+    - CI (dummy LLM)
+    """
+    if os.getenv("OLLAMA_BASE_URL"):
+        return os.getenv("OLLAMA_BASE_URL")
+    return "http://127.0.0.1:11434"
 
+
+OLLAMA_BASE_URL = resolve_ollama_base_url()
 USE_DUMMY_LLM = os.getenv("USE_DUMMY_LLM", "false").lower() == "true"
 
 # ---------------------------
@@ -64,12 +75,19 @@ class RAGChain:
     def __init__(self, retriever: VectorRetriever):
         self.retriever = retriever
 
+        callbacks = None
+        if os.getenv("LANGCHAIN_TRACING_V2", "false").lower() == "true":
+            callbacks = CallbackManager([LangChainTracer()])
+            logger.info("LangSmith tracing enabled")
+
         if USE_DUMMY_LLM:
             logger.warning("Initializing RAGChain with Dummy LLM (CI mode)")
             self.llm: BaseChatModel = DummyChatModel()
             self.streaming_enabled = False
         else:
-            logger.info("Initializing RAGChain with Ollama (llama3.2)")
+            logger.info(
+                f"Initializing RAGChain with Ollama (llama3.2) @ {OLLAMA_BASE_URL}"
+            )
             self.llm = ChatOllama(
                 model="llama3.2",
                 base_url=OLLAMA_BASE_URL,
@@ -77,6 +95,7 @@ class RAGChain:
                 streaming=True,
                 num_ctx=2048,
                 num_predict=256,
+                callbacks=callbacks,
             )
             self.streaming_enabled = True
 
