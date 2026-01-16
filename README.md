@@ -1,6 +1,4 @@
-Here's your content converted into clean, well-structured Markdown format:
-Markdown# MedWise RAG – Production-Grade Medical Retrieval-Augmented Generation System
-
+# MedWise RAG – Production-Grade Medical Retrieval-Augmented Generation System
 ## Overview
 
 MedWise RAG is a **production-grade** medical question-answering system built using **Retrieval-Augmented Generation (RAG)**.  
