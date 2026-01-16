@@ -7,6 +7,13 @@ from langchain_ollama import ChatOllama
 
 from src.retrieval.retriever import VectorRetriever
 
+import os
+
+OLLAMA_BASE_URL = os.getenv(
+    "OLLAMA_BASE_URL",
+    "http://127.0.0.1:11434"
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -37,6 +44,7 @@ class RAGChain:
 
         self.llm = ChatOllama(
             model="llama3.2",
+            base_url=OLLAMA_BASE_URL,
             temperature=0.1,
             streaming=True,
             num_ctx=2048,      # limit context window for speed
